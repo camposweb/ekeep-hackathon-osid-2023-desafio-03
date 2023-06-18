@@ -19,11 +19,13 @@ export const UserFormContainer = styled.main`
     margin: 0 auto;
     flex-direction: column;
     gap: 1rem;
+    padding: 10rem 0;
 
     input {
       //width: 10rem;
       display: flex;
       font-size: 1rem;
+      margin-top: 1rem;
       //border: 1px solid ${({ theme }) => theme.black};
       border: 1px solid rgba(31, 36, 41, 0.4);
       border-radius: 6px;
@@ -36,9 +38,11 @@ export const UserFormContainer = styled.main`
     textarea {
       display: flex;
       padding: 1rem;
+      margin-top: 1rem;
       height: 10rem;
       border: 1px solid ${({ theme }) => theme.black};
       border-radius: 6px;
+      background: transparent;
     }
 
     button[type='submit'] {
@@ -54,7 +58,7 @@ export const UserFormContainer = styled.main`
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem 1rem;
+  padding: 3rem 3rem;
   border-radius: 1.5rem;
   gap: 1rem;
   width: 100%;

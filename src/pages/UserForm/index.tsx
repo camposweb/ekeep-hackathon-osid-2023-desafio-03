@@ -42,7 +42,7 @@ export function UserForm() {
   }
 
   function RenderButton() {
-    if (formStep >= 5) {
+    if (formStep >= 6) {
       return (
         <ButtonContainer>
           <LinkDonation href="https://doeagora.irmadulce.com/" target="_blank">
@@ -50,7 +50,7 @@ export function UserForm() {
           </LinkDonation>
         </ButtonContainer>
       )
-    } else if (formStep === 4) {
+    } else if (formStep === 5) {
       return (
         <ButtonContainer>
           <ButtonFormNext onClick={completeFormStep}>Enviar</ButtonFormNext>
@@ -126,7 +126,10 @@ export function UserForm() {
           )}
           {formStep === 3 && (
             <>
-              <TitleRadioButton>Qual foi sua experiência?</TitleRadioButton>
+              <TitleRadioButton>
+                Que nota você daria para a forma como você foi recepcionado na
+                OSID?
+              </TitleRadioButton>
               <Controller
                 control={control}
                 name="type1"
@@ -158,16 +161,52 @@ export function UserForm() {
             </>
           )}
           {formStep === 4 && (
-            <FormStep>
-              <TitleRadioButton>Deseja Comentar?</TitleRadioButton>
-              <textarea {...register('comment')} />
-            </FormStep>
+            <>
+              <TitleRadioButton>Você se sentiu acolhido(a)?</TitleRadioButton>
+              <Controller
+                control={control}
+                name="type2"
+                render={({ field }) => {
+                  return (
+                    <FormRadio
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      <FormRadioOption value="muito-ruim">
+                        <NumberCircleOne size={27} />
+                      </FormRadioOption>
+                      <FormRadioOption value="ruim">
+                        <NumberCircleTwo size={27} />
+                      </FormRadioOption>
+                      <FormRadioOption value="regular">
+                        <NumberCircleThree size={27} />
+                      </FormRadioOption>
+                      <FormRadioOption value="bom">
+                        <NumberCircleFour size={27} />
+                      </FormRadioOption>
+                      <FormRadioOption value="muito-bom">
+                        <NumberCircleFive size={27} />
+                      </FormRadioOption>
+                    </FormRadio>
+                  )
+                }}
+              />
+            </>
           )}
-
           {formStep === 5 && (
             <FormStep>
               <TitleRadioButton>
-                👋 Hey, voce gostaria de constribuir com a Obra Social Irma
+                Deseja compartilhar mais algumas palavras sobre a sua
+                experiência com a OSID?
+              </TitleRadioButton>
+              <textarea placeholder="Escreva aqui" {...register('comment')} />
+            </FormStep>
+          )}
+
+          {formStep === 6 && (
+            <FormStep>
+              <TitleRadioButton>
+                👋 Hey, voce gostaria de constribuir com as Obras Sociais Irmã
                 Dulce?
               </TitleRadioButton>
               {/* <ButtonContainer>
