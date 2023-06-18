@@ -93,6 +93,14 @@ export const ButtonFormNext = styled(ButtonForm)`
   background: ${({ theme }) => theme.buttonColor};
 `
 
+export const DonationContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: end;
+`
+
 export const LinkDonation = styled.a`
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
@@ -109,6 +117,25 @@ export const LinkDonation = styled.a`
   background: ${({ theme }) => theme.buttonColor};
   border: 0;
   text-decoration: none;
+`
+export const LinkVoluntary = styled.a`
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6.25rem;
+  display: flex;
+  padding: 0.625rem 0.875rem;
+  //width: 5.438rem;
+  //height: 2.5rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  text-decoration: none;
+  color: ${({ theme }) => theme.fontColor};
+  //background: ${({ theme }) => theme.buttonColor};
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.fontColor};
 `
 
 export const ButtonDonation = styled(ButtonForm)`
@@ -133,6 +160,14 @@ export const TitleRadioButton = styled.strong`
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 1rem;
+  color: ${({ theme }) => theme.black};
+`
+
+export const SubtitleRadioButton = styled.strong`
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 1rem;
   color: ${({ theme }) => theme.black};
 `
 

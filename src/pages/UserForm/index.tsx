@@ -5,11 +5,14 @@ import {
   ButtonContainer,
   ButtonFormNext,
   ButtonFormPrevious,
+  DonationContainer,
   FormContainer,
   FormRadio,
   FormRadioOption,
   FormStep,
   LinkDonation,
+  LinkVoluntary,
+  SubtitleRadioButton,
   TitleRadioButton,
   UserFormContainer,
 } from './styles'
@@ -44,11 +47,14 @@ export function UserForm() {
   function RenderButton() {
     if (formStep >= 6) {
       return (
-        <ButtonContainer>
+        <DonationContainer>
           <LinkDonation href="https://doeagora.irmadulce.com/" target="_blank">
             Eu quero doar
           </LinkDonation>
-        </ButtonContainer>
+          <LinkVoluntary href="https://doeagora.irmadulce.com/" target="_blank">
+            Eu quero voluntariar
+          </LinkVoluntary>
+        </DonationContainer>
       )
     } else if (formStep === 5) {
       return (
@@ -209,6 +215,10 @@ export function UserForm() {
                 👋 Hey, voce gostaria de constribuir com as Obras Sociais Irmã
                 Dulce?
               </TitleRadioButton>
+              <SubtitleRadioButton>
+                Há muitas maneiras de contribuir com a Organização. Aqui estamos
+                para servir, amar e acolher.
+              </SubtitleRadioButton>
               {/* <ButtonContainer>
                 <ButtonFormNext>Doar</ButtonFormNext>
               </ButtonContainer> */}
