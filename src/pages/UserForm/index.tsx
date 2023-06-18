@@ -26,6 +26,8 @@ import {
   NumberCircleTwo,
 } from '@phosphor-icons/react'
 
+import logoDulce from '../../assets/logo-dulce.png'
+
 const newUserFormSchema = z.object({
   name: z.string(),
   email: z.string().email(),
@@ -100,6 +102,7 @@ export function UserForm() {
     <UserFormContainer>
       <form onSubmit={handleSubmit(handleCreateNewUserForm)}>
         <FormContainer>
+          <img src={logoDulce} alt="Dulce" />
           {formStep === 0 && (
             <FormStep>
               <TitleRadioButton>Qual é o seu nome?</TitleRadioButton>

@@ -56,6 +56,7 @@ export const UserFormContainer = styled.main`
 `
 
 export const FormContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 3rem 3rem;
@@ -63,6 +64,12 @@ export const FormContainer = styled.div`
   gap: 1rem;
   width: 100%;
   background: ${({ theme }) => theme.backgroudCard};
+
+  img {
+    position: absolute;
+    top: -7rem;
+    left: calc(50% - 7.5rem / 2);
+  }
 `
 
 export const ButtonForm = styled.button`
