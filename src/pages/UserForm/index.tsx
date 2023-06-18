@@ -67,11 +67,17 @@ export function UserForm() {
     } else {
       return (
         <ButtonContainer>
-          <ButtonFormPrevious>Anterior</ButtonFormPrevious>
+          <ButtonFormPrevious onClick={ButtonPrevious}>
+            Anterior
+          </ButtonFormPrevious>
           <ButtonFormNext onClick={completeFormStep}>Próximo</ButtonFormNext>
         </ButtonContainer>
       )
     }
+  }
+
+  function ButtonPrevious() {
+    setFormStep((current) => current - 1)
   }
 
   const { createUserForm } = useContext(FormContext)

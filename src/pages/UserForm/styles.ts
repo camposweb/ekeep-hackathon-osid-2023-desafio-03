@@ -9,7 +9,7 @@ export const UserFormContainer = styled.main`
   justify-content: center;
   align-items: center;
   margin-top: 3rem;
-  padding: 0 3rem;
+  padding: 0 1rem;
   display: flex;
 
   form {
@@ -32,7 +32,7 @@ export const UserFormContainer = styled.main`
       padding: 0.5rem;
       //border-style: solid;
       color: ${({ theme }) => theme.black};
-      background: transparent;
+      background: ${({ theme }) => theme.inputColor};
     }
 
     textarea {
@@ -42,7 +42,7 @@ export const UserFormContainer = styled.main`
       height: 10rem;
       border: 1px solid ${({ theme }) => theme.black};
       border-radius: 6px;
-      background: transparent;
+      background: ${({ theme }) => theme.inputColor};
     }
 
     button[type='submit'] {
@@ -192,7 +192,8 @@ export const FormRadioOption = styled(RadioGroup.Item)`
   justify-content: center;
   border: 0;
   background: rgba(45, 53, 60, 0.1);
-  color: ${({ theme }) => theme.fontColor};
+  color: ${({ theme }) => theme.buttonRadioHover};
+  background: ${({ theme }) => theme.buttonRadio};
   border-radius: 0.75rem;
   width: 3rem;
   height: 3rem;
@@ -200,14 +201,14 @@ export const FormRadioOption = styled(RadioGroup.Item)`
 
   &[data-state='unchecked']:hover {
     transition: 0.2s;
-    background: ${({ theme }) => theme.buttonColorHover};
-    color: ${({ theme }) => theme.fontColorHover};
+    background: ${({ theme }) => theme.buttonRadioHover};
+    color: ${({ theme }) => theme.buttonRadio};
   }
 
   &[data-state='checked'] {
     transition: 0.2s;
-    background: ${({ theme }) => theme.buttonColorHover};
-    color: ${({ theme }) => theme.fontColorHover};
+    background: ${({ theme }) => theme.buttonRadioHover};
+    color: ${({ theme }) => theme.buttonRadio};
   }
   /* &:hover {
     transition: 0.2s;
