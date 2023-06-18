@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 
 	body, input, textarea, button {
 		//font-family: 400 1rem 'Roboto', sans-serif;
-		font-size: 'Roboto', sans-serif;
+		font-size: 'Inter', sans-serif;
 		font-size: 1rem;
 		font-weight: 400;
 	}

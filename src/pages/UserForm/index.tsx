@@ -2,13 +2,27 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, useForm } from 'react-hook-form'
 import {
+  ButtonContainer,
+  ButtonDonation,
+  ButtonFormNext,
+  ButtonFormPrevious,
+  FormContainer,
   FormRadio,
   FormRadioOption,
+  FormStep,
+  LinkDonation,
   TitleRadioButton,
   UserFormContainer,
 } from './styles'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { FormContext } from '../../contexts/FormContext'
+import {
+  NumberCircleFive,
+  NumberCircleFour,
+  NumberCircleOne,
+  NumberCircleThree,
+  NumberCircleTwo,
+} from '@phosphor-icons/react'
 
 const newUserFormSchema = z.object({
   name: z.string(),
@@ -22,6 +36,37 @@ const newUserFormSchema = z.object({
 type NewUserFormInputs = z.infer<typeof newUserFormSchema>
 
 export function UserForm() {
+  const [formStep, setFormStep] = useState(0)
+
+  function completeFormStep() {
+    setFormStep((current) => current + 1)
+  }
+
+  function RenderButton() {
+    if (formStep >= 5) {
+      return (
+        <ButtonContainer>
+          <LinkDonation href="https://doeagora.irmadulce.com/" target="_blank">
+            Doar
+          </LinkDonation>
+        </ButtonContainer>
+      )
+    } else if (formStep === 4) {
+      return (
+        <ButtonContainer>
+          <ButtonFormNext onClick={completeFormStep}>Enviar</ButtonFormNext>
+        </ButtonContainer>
+      )
+    } else {
+      return (
+        <ButtonContainer>
+          <ButtonFormPrevious>Anterior</ButtonFormPrevious>
+          <ButtonFormNext onClick={completeFormStep}>Próximo</ButtonFormNext>
+        </ButtonContainer>
+      )
+    }
+  }
+
   const { createUserForm } = useContext(FormContext)
   const {
     control,
@@ -49,58 +94,92 @@ export function UserForm() {
   return (
     <UserFormContainer>
       <form onSubmit={handleSubmit(handleCreateNewUserForm)}>
-        <input
-          type="text"
-          placeholder="Digite seu Nome"
-          {...register('name')}
-        />
-        <input
-          type="email"
-          placeholder="Digite seu e-mail"
-          {...register('email')}
-        />
-        <input
-          type="tel"
-          placeholder="digite seu telefone"
-          {...register('contact')}
-        />
+        <FormContainer>
+          {formStep === 0 && (
+            <FormStep>
+              <TitleRadioButton>Qual é o seu nome?</TitleRadioButton>
+              <input
+                type="text"
+                placeholder="Digite seu Nome"
+                {...register('name')}
+              />
+            </FormStep>
+          )}
+          {formStep === 1 && (
+            <FormStep>
+              <TitleRadioButton>Qual é o seu email?</TitleRadioButton>
+              <input
+                type="text"
+                placeholder="Digite seu email"
+                {...register('email')}
+              />
+            </FormStep>
+          )}
+          {formStep === 2 && (
+            <FormStep>
+              <TitleRadioButton>Qual é o seu telefone?</TitleRadioButton>
+              <input
+                type="text"
+                placeholder="Digite seu telefone"
+                {...register('contact')}
+              />
+            </FormStep>
+          )}
+          {formStep === 3 && (
+            <>
+              <TitleRadioButton>Qual foi sua experiência?</TitleRadioButton>
+              <Controller
+                control={control}
+                name="type1"
+                render={({ field }) => {
+                  return (
+                    <FormRadio
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      <FormRadioOption value="muito-ruim">
+                        <NumberCircleOne size={27} />
+                      </FormRadioOption>
+                      <FormRadioOption value="ruim">
+                        <NumberCircleTwo size={27} />
+                      </FormRadioOption>
+                      <FormRadioOption value="regular">
+                        <NumberCircleThree size={27} />
+                      </FormRadioOption>
+                      <FormRadioOption value="bom">
+                        <NumberCircleFour size={27} />
+                      </FormRadioOption>
+                      <FormRadioOption value="muito-bom">
+                        <NumberCircleFive size={27} />
+                      </FormRadioOption>
+                    </FormRadio>
+                  )
+                }}
+              />
+            </>
+          )}
+          {formStep === 4 && (
+            <FormStep>
+              <TitleRadioButton>Deseja Comentar?</TitleRadioButton>
+              <textarea {...register('comment')} />
+            </FormStep>
+          )}
 
-        <TitleRadioButton>Pergunt 1</TitleRadioButton>
-        <Controller
-          control={control}
-          name="type1"
-          render={({ field }) => {
-            return (
-              <FormRadio onValueChange={field.onChange} value={field.value}>
-                <FormRadioOption value="muito-ruim">1</FormRadioOption>
-                <FormRadioOption value="ruim">2</FormRadioOption>
-                <FormRadioOption value="regular">3</FormRadioOption>
-                <FormRadioOption value="bom">4</FormRadioOption>
-                <FormRadioOption value="muito-bom">5</FormRadioOption>
-              </FormRadio>
-            )
-          }}
-        />
+          {formStep === 5 && (
+            <FormStep>
+              <TitleRadioButton>Obrigado</TitleRadioButton>
+              {/* <ButtonContainer>
+                <ButtonFormNext>Doar</ButtonFormNext>
+              </ButtonContainer> */}
+            </FormStep>
+          )}
 
-        <TitleRadioButton>Pergunta 2</TitleRadioButton>
-        <Controller
-          control={control}
-          name="type2"
-          render={({ field }) => {
-            return (
-              <FormRadio onValueChange={field.onChange} value={field.value}>
-                <FormRadioOption value="muito-ruim">1</FormRadioOption>
-                <FormRadioOption value="ruim">2</FormRadioOption>
-                <FormRadioOption value="regular">3</FormRadioOption>
-                <FormRadioOption value="bom">4</FormRadioOption>
-                <FormRadioOption value="muito-bom">5</FormRadioOption>
-              </FormRadio>
-            )
-          }}
-        />
-
-        <textarea {...register('comment')} />
-        <button type="submit">Enviar</button>
+          {/* <ButtonContainer>
+            <ButtonFormPrevious>Anterior</ButtonFormPrevious>
+            <ButtonFormNext>Próximo</ButtonFormNext>
+          </ButtonContainer> */}
+          {RenderButton()}
+        </FormContainer>
       </form>
     </UserFormContainer>
   )
