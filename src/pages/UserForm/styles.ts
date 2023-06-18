@@ -96,8 +96,8 @@ export const LinkDonation = styled.a`
   border-radius: 6.25rem;
   display: flex;
   padding: 0.625rem 0.875rem;
-  width: 5.438rem;
-  height: 2.5rem;
+  //width: 5.438rem;
+  //height: 2.5rem;
   cursor: pointer;
   align-items: center;
   justify-content: center;

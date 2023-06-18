@@ -46,7 +46,7 @@ export function UserForm() {
       return (
         <ButtonContainer>
           <LinkDonation href="https://doeagora.irmadulce.com/" target="_blank">
-            Doar
+            Eu quero doar
           </LinkDonation>
         </ButtonContainer>
       )
@@ -166,7 +166,10 @@ export function UserForm() {
 
           {formStep === 5 && (
             <FormStep>
-              <TitleRadioButton>Obrigado</TitleRadioButton>
+              <TitleRadioButton>
+                👋 Hey, voce gostaria de constribuir com a Obra Social Irma
+                Dulce?
+              </TitleRadioButton>
               {/* <ButtonContainer>
                 <ButtonFormNext>Doar</ButtonFormNext>
               </ButtonContainer> */}
